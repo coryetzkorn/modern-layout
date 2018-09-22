@@ -18,15 +18,19 @@ export default {
 .layout {
   display: flex;
   justify-content: space-between;
+  height: 100%;
+  margin: 0 -5px;
 }
-.sidebar {
-  width: calc(75% - 10px);
-  height: 190px;
-  background: blue;
+.layout div {
+  height: 100%;
+  flex: 1 1 auto;
+  margin: 0 5px;
 }
-.main {
-  width: calc(25% - 10px);
-  height: 190px;
-  background: red;
+.layout div:nth-child(1) {
+  background: #59595b;
+  flex-grow: 3;
+}
+.layout div:nth-child(2) {
+  background: #a4d2ee;
 }
 </style>

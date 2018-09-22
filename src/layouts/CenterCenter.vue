@@ -18,11 +18,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 240px;
+  background: #ffd7c6;
+  height: 100%;
 }
 .layout div {
-  width: 100px;
-  height: 100px;
-  background: orange;
+  width: 50%;
+  height: 50%;
+  background: #fd6e00;
 }
 </style>

@@ -3,13 +3,12 @@
     <div></div>
     <div></div>
     <div></div>
-    <div></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Columns",
+  name: "HotDog",
   props: {
     name: String
   }
@@ -28,16 +27,12 @@ export default {
   flex: 1 1 auto;
   margin: 0 5px;
 }
-.layout div:nth-child(1) {
-  background: #ffd7c6;
+.layout div:nth-child(1),
+.layout div:nth-child(3) {
+  background: #ffd700;
 }
 .layout div:nth-child(2) {
-  background: #d9bc9c;
-}
-.layout div:nth-child(3) {
-  background: #aaaead;
-}
-.layout div:nth-child(4) {
-  background: #59595b;
+  background: #c93e37;
+  flex-grow: 2;
 }
 </style>
