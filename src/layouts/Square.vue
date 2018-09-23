@@ -15,6 +15,6 @@ export default {
 <style scoped>
 .layout {
   height: 100%;
-  background: #715c7c;
+  background: #fd6e00;
 }
 </style>

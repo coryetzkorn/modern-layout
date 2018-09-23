@@ -27,7 +27,7 @@ export default {
   margin: 0 5px;
 }
 .layout div:nth-child(1) {
-  background: #715c7c;
+  background: #D9BC9C;
 }
 .layout div:nth-child(2) {
   background: #4c8438;

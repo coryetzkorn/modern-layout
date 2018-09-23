@@ -38,13 +38,10 @@ export default {
 .layout div {
   padding-top: 100%;
 }
-.layout div:nth-child(3n - 0) {
-  background: #a4d2ee;
+.layout div:nth-child(2n - 3) {
+  background: #333333;
 }
-.layout div:nth-child(3n - 1) {
-  background: #c93e37;
-}
-.layout div:nth-child(3n - 2) {
-  background: #ffd700;
+.layout div:nth-child(2n - 2) {
+  background: #59595b;
 }
 </style>

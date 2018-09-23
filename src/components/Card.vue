@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="openOverlay">
     <div class="card__layout">
       <Grid v-if='layout=="Grid"'/>
       <Columns v-if='layout=="Columns"'/>
@@ -34,7 +34,13 @@ export default {
     Square
   },
   props: {
-    layout: String
+    layout: String,
+    showLabel: Boolean
+  },
+  methods: {
+    openOverlay: function() {
+      this.$emit("open-overlay", this.layout)
+    }
   }
 }
 </script>

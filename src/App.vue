@@ -6,34 +6,37 @@
     <header class="header">
       <div class="header__inner">
         <h1>Modern Layout</h1>
-        <p>A collection of CSS layouts built with flexbox and grid.<br>No floats. Just a few divs. By <a href="https://www.coryetzkorn.com">@coryetzkorn</a>.</p>
+        <p>A collection of CSS layouts built with flexbox and grid.<br>No floats or classes. Just a few divs. By <a href="https://www.coryetzkorn.com">@coryetzkorn</a>.</p>
       </div>
     </header>
     <div class="cards">
-      <Card layout="Grid"/>
-      <Card layout="Columns"/>
-      <Card layout="Sidekick No. 1"/>
-      <Card layout="Sidekick No. 2"/>
-      <Card layout="Hot Dog"/>
-      <Card layout="Center Center"/>
-      <Card layout="Sidekick No. 1"/>
-      <Card layout="Sidekick No. 2"/>
-      <Card layout="Columns"/>
-      <Card layout="Grid"/>
-      <Card layout="Center Center"/>
-      <Card layout="Hot Dog"/>
-      <Card layout="Grid"/>
-      <Card layout="Columns"/>
-      <Card layout="Sidekick No. 1"/>
-      <Card layout="Sidekick No. 2"/>
-      <Card layout="Hot Dog"/>
-      <Card layout="Center Center"/>
-      <Card layout="Sidekick No. 1"/>
-      <Card layout="Sidekick No. 2"/>
-      <Card layout="Columns"/>
-      <Card layout="Grid"/>
-      <Card layout="Center Center"/>
-      <Card layout="Hot Dog"/>
+      <Card layout="Grid" v-on:open-overlay="openOverlay"/>
+      <Card layout="Columns" v-on:open-overlay="openOverlay"/>
+      <Card layout="Sidekick No. 1" v-on:open-overlay="openOverlay"/>
+      <Card layout="Sidekick No. 2" v-on:open-overlay="openOverlay"/>
+      <Card layout="Hot Dog" v-on:open-overlay="openOverlay"/>
+      <Card layout="Square" v-on:open-overlay="openOverlay"/>
+      <Card layout="Center Center" v-on:open-overlay="openOverlay"/>
+      <Card layout="Sidekick No. 1" v-on:open-overlay="openOverlay"/>
+      <Card layout="Sidekick No. 2" v-on:open-overlay="openOverlay"/>
+      <Card layout="Columns" v-on:open-overlay="openOverlay"/>
+      <Card layout="Grid" v-on:open-overlay="openOverlay"/>
+      <Card layout="Center Center" v-on:open-overlay="openOverlay"/>
+      <Card layout="Hot Dog" v-on:open-overlay="openOverlay"/>
+      <Card layout="Square" v-on:open-overlay="openOverlay"/>
+      <Card layout="Grid" v-on:open-overlay="openOverlay"/>
+      <Card layout="Columns" v-on:open-overlay="openOverlay"/>
+      <Card layout="Sidekick No. 1" v-on:open-overlay="openOverlay"/>
+      <Card layout="Sidekick No. 2" v-on:open-overlay="openOverlay"/>
+      <Card layout="Hot Dog" v-on:open-overlay="openOverlay"/>
+      <Card layout="Center Center" v-on:open-overlay="openOverlay"/>
+      <Card layout="Sidekick No. 1" v-on:open-overlay="openOverlay"/>
+      <Card layout="Sidekick No. 2" v-on:open-overlay="openOverlay"/>
+      <Card layout="Columns" v-on:open-overlay="openOverlay"/>
+      <Card layout="Square" v-on:open-overlay="openOverlay"/>
+      <Card layout="Grid" v-on:open-overlay="openOverlay"/>
+      <Card layout="Center Center" v-on:open-overlay="openOverlay"/>
+      <Card layout="Hot Dog" v-on:open-overlay="openOverlay"/>
     </div>
     <div class="q-and-a">
       <div class="q-and-a__item">
@@ -43,6 +46,17 @@
       <div class="q-and-a__item">
         <strong>Q</strong>Is this a CSS framework?<br>
         <strong>A</strong>No. These are just tiny snippets of code you can copy-paste.
+      </div>
+    </div>
+    <div class="overlay" v-if="activeLayout">
+      <div class="overlay__panel">
+        <Card v-bind:layout="activeLayout" v-bind:show-label="false"/>
+      </div>
+      <div class="overlay__panel">
+        <div class="close" v-on:click="closeOverlay">Close</div>
+        <div>
+          <h2>{{ activeLayout }}</h2>
+        </div>
       </div>
     </div>
   </div>
@@ -55,6 +69,19 @@ export default {
   name: "app",
   components: {
     Card
+  },
+  data: function() {
+    return {
+      activeLayout: ""
+    }
+  },
+  methods: {
+    openOverlay: function(layout) {
+      this.activeLayout = layout
+    },
+    closeOverlay: function() {
+      this.activeLayout = ""
+    }
   }
 }
 </script>
@@ -77,13 +104,46 @@ html {
     padding: 0 20px;
   }
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.overlay__panel {
+  width: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.overlay__panel:nth-child(1) {
+  background: #ffffff;
+}
+.overlay__panel:nth-child(1) .card {
+  width: 50%;
+}
+.overlay__panel:nth-child(2) {
+  background: #000000;
+  color: #ffffff;
+}
+.overlay__panel:nth-child(2) h2 {
+  font-family: "GT America Trial", Helvetica, Arial, sans-serif;
+  font-size: 60px;
+  font-weight: 400;
+  margin: 0;
+}
+
 .share {
   text-align: right;
   flex-grow: 1;
   padding-top: 30px;
   position: absolute;
   top: 0;
-  right: 30px;
+  right: 50px;
 }
 .header {
   margin: 12vh 40px;
