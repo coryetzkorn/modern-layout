@@ -1,13 +1,15 @@
 <template>
   <div class="card" @click="openOverlay">
-    <div class="card__layout">
-      <Grid v-if='layout=="Grid"'/>
-      <Columns v-if='layout=="Columns"'/>
-      <SidekickNo1 v-if='layout=="Sidekick No. 1"'/>
-      <SidekickNo2 v-if='layout=="Sidekick No. 2"'/>
-      <CenterCenter v-if='layout=="Center Center"'/>
-      <HotDog v-if='layout=="Hot Dog"'/>
-      <Square v-if='layout=="Square"'/>
+    <div class="card__spacer">
+      <div class="card__layout">
+        <Grid v-if='layout=="Grid"'/>
+        <Columns v-if='layout=="Columns"'/>
+        <SidekickNo1 v-if='layout=="Sidekick No. 1"'/>
+        <SidekickNo2 v-if='layout=="Sidekick No. 2"'/>
+        <CenterCenter v-if='layout=="Center Center"'/>
+        <HotDog v-if='layout=="Hot Dog"'/>
+        <Square v-if='layout=="Square"'/>
+      </div>
     </div>
     <div class="card__name">{{ layout }}</div>
   </div>
@@ -50,18 +52,25 @@ export default {
   background: #ffffff;
   cursor: pointer;
   position: relative;
+  transform: scale(1, 1);
+}
+.card:active {
+  transform: scale(1.05, 1.05);
+}
+.card__spacer {
+  position: relative;
+}
+.card__spacer::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
 }
 .card__layout {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  height: calc(100% - 38px);
-}
-.card::before {
-  content: "";
-  display: block;
-  margin-top: 100%;
+  bottom: 0;
 }
 .card__name {
   font-family: "GT America Mono Trial", Helvetica, Arial, sans-serif;

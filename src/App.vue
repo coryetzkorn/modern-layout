@@ -48,31 +48,23 @@
         <strong>A</strong>No. These are just tiny snippets of code you can copy-paste.
       </div>
     </div>
-    <div class="overlay" v-if="activeLayout">
-      <div class="overlay__panel">
-        <Card v-bind:layout="activeLayout" v-bind:show-label="false"/>
-      </div>
-      <div class="overlay__panel">
-        <div class="close" v-on:click="closeOverlay">Close</div>
-        <div>
-          <h2>{{ activeLayout }}</h2>
-        </div>
-      </div>
-    </div>
+    <Overlay v-bind:layout="activeLayout"  v-on:close-overlay="closeOverlay" v-if="activeLayout" />
   </div>
 </template>
 
 <script>
 import Card from "./components/Card.vue"
+import Overlay from "./components/Overlay.vue"
 
 export default {
   name: "app",
   components: {
-    Card
+    Card,
+    Overlay
   },
   data: function() {
     return {
-      activeLayout: ""
+      activeLayout: "Columns"
     }
   },
   methods: {
@@ -104,39 +96,6 @@ html {
     padding: 0 20px;
   }
 }
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-.overlay__panel {
-  width: 50%;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-.overlay__panel:nth-child(1) {
-  background: #ffffff;
-}
-.overlay__panel:nth-child(1) .card {
-  width: 50%;
-}
-.overlay__panel:nth-child(2) {
-  background: #000000;
-  color: #ffffff;
-}
-.overlay__panel:nth-child(2) h2 {
-  font-family: "GT America Trial", Helvetica, Arial, sans-serif;
-  font-size: 60px;
-  font-weight: 400;
-  margin: 0;
-}
-
 .share {
   text-align: right;
   flex-grow: 1;
